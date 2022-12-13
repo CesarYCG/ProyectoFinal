@@ -7,7 +7,6 @@
 * 
 */
 #include <Windows.h>
-
 #include <glad/glad.h>
 #include <glfw3.h>	//main
 #include <stdlib.h>		
@@ -16,13 +15,10 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <time.h>
 
-
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>	//Texture
-
 #define SDL_MAIN_HANDLED
 #include <SDL/SDL.h>
-
 #include <shader_m.h>
 #include <camera.h>
 #include <modelAnim.h>
@@ -30,7 +26,23 @@
 #include <Skybox.h>
 #include <iostream>
 
-//#pragma comment(lib, "winmm.lib")
+// --------------- REPRODUCCION MUSICAL --------------------------
+
+// Pragma para reproducir audio .wav o mp3
+#pragma comment(lib, "winmm.lib")
+bool music = true, // Variable para activar musica
+	 current_song = false; // Cancion, se vuelve True si se reproduce bien
+
+// Funcion para reproducir musica
+void play_music() {
+	if (music) {
+		current_song = PlaySound(L"NavidadSong.wav", NULL, SND_LOOP | SND_ASYNC);
+		music = false; // Debe ser activada de nuevo para permitir reproduccion
+	}
+} // play_music()
+
+// --------------- FIN PARTE MUSICAL ------------------------------
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -66,8 +78,8 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 // posiciones
 //float x = 0.0f;
 //float y = 0.0f;
-float	movAuto_x = 0.0f,
-		movAuto_z = 0.0f,
+float	movAuto_x = 190.0f,
+		movAuto_z = 80.0f,
 		orienta = 0.0f;
 bool	animacion = false,
 		recorrido1 = true,
@@ -277,8 +289,8 @@ int main()
 	//Model brazoDer("resources/objects/Personaje/brazoder.obj");
 	//Model brazoIzq("resources/objects/Personaje/brazoizq.obj");
 	//Model cabeza("resources/objects/Personaje/cabeza.obj");
-	//Model carro("resources/objects/lambo/carroceria.obj");
-	//Model llanta("resources/objects/lambo/Wheel.obj");
+	Model carro("resources/objects/lambo/carroceria.obj");
+	Model llanta("resources/objects/lambo/Wheel.obj");
 	//Model casaVieja("resources/objects/casa/OldHouse.obj");
 	Model cubo("resources/objects/cubo/cube02.obj");
 	//Model casaDoll("resources/objects/casa/DollHouse.obj");
@@ -443,9 +455,9 @@ int main()
 
 
 		// -------------------------------------------------------------------------------------------------------------------------
-		// Carro
-		/*
-		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		// Carro - Lambo
+		
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::translate(model, glm::vec3(15.0f + movAuto_x, -1.0f, movAuto_z));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
@@ -474,7 +486,7 @@ int main()
 		staticShader.setMat4("model", model);
 		llanta.Draw(staticShader);	//Izq trase
 		
-		*/
+		
 		// -------------------------------------------------------------------------------------------------------------------------
 		
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -607,6 +619,9 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 		lightPosition.x++;
 	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
 		lightPosition.x--;
+	// Reproduccion Musical
+	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+		play_music();
 
 	//Car animation
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
