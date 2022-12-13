@@ -267,25 +267,28 @@ int main()
 
 	// load models
 	// -----------
-	Model piso("resources/objects/piso/piso.obj");
-	Model botaDer("resources/objects/Personaje/bota.obj");
-	Model piernaDer("resources/objects/Personaje/piernader.obj");
-	Model piernaIzq("resources/objects/Personaje/piernader.obj");
-	Model torso("resources/objects/Personaje/torso.obj");
-	Model brazoDer("resources/objects/Personaje/brazoder.obj");
-	Model brazoIzq("resources/objects/Personaje/brazoizq.obj");
-	Model cabeza("resources/objects/Personaje/cabeza.obj");
-	Model carro("resources/objects/lambo/carroceria.obj");
-	Model llanta("resources/objects/lambo/Wheel.obj");
-	Model casaVieja("resources/objects/casa/OldHouse.obj");
-	//Model cubo("resources/objects/cubo/cube02.obj");
-	Model casaDoll("resources/objects/casa/DollHouse.obj");
+	Model casaPro("resources/objects/CasaProyecto/CASABIEN.obj");
+	Model pasto("resources/objects/piso/pastos.obj");
+	//Model piso("resources/objects/piso/piso.obj");
+	//Model botaDer("resources/objects/Personaje/bota.obj");
+	//Model piernaDer("resources/objects/Personaje/piernader.obj");
+	//Model piernaIzq("resources/objects/Personaje/piernader.obj");
+	//Model torso("resources/objects/Personaje/torso.obj");
+	//Model brazoDer("resources/objects/Personaje/brazoder.obj");
+	//Model brazoIzq("resources/objects/Personaje/brazoizq.obj");
+	//Model cabeza("resources/objects/Personaje/cabeza.obj");
+	//Model carro("resources/objects/lambo/carroceria.obj");
+	//Model llanta("resources/objects/lambo/Wheel.obj");
+	//Model casaVieja("resources/objects/casa/OldHouse.obj");
+	Model cubo("resources/objects/cubo/cube02.obj");
+	//Model casaDoll("resources/objects/casa/DollHouse.obj");
+	
+	
+	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
+	//animacionPersonaje.initShaders(animShader.ID);
 
-	ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
-	animacionPersonaje.initShaders(animShader.ID);
-
-	ModelAnim ninja("resources/objects/ZombieWalk/ZombieWalk.dae");
-	ninja.initShaders(animShader.ID);
+	//ModelAnim ninja("resources/objects/ZombieWalk/ZombieWalk.dae");
+	//ninja.initShaders(animShader.ID);
 
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
@@ -325,7 +328,7 @@ int main()
 		//Setup Advanced Lights
 		staticShader.setVec3("viewPos", camera.Position);
 		staticShader.setVec3("dirLight.direction", lightDirection);
-		staticShader.setVec3("dirLight.ambient", glm::vec3(0.0f, 0.0f, 0.0f));
+		staticShader.setVec3("dirLight.ambient", glm::vec3(0.4f, 0.4f, 0.4f));
 		staticShader.setVec3("dirLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
 		staticShader.setVec3("dirLight.specular", glm::vec3(0.0f, 0.0f, 0.0f));
 
@@ -376,6 +379,8 @@ int main()
 		// Personaje Animacion
 		// -------------------------------------------------------------------------------------------------------------------------
 		//Remember to activate the shader with the animation
+
+		/*
 		animShader.use();
 		animShader.setMat4("projection", projection);
 		animShader.setMat4("view", view);
@@ -393,16 +398,22 @@ int main()
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
 		animacionPersonaje.Draw(animShader);
+		*/
+		
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Segundo Personaje Animacion
 		// -------------------------------------------------------------------------------------------------------------------------
 
+		/*
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(40.3f, 1.75f, 0.3f)); // translate it down so it's at the center of the scene
 		model = glm::scale(model, glm::vec3(0.5f));	// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
 		ninja.Draw(animShader);
+		
+		*/
+		
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -410,26 +421,30 @@ int main()
 		staticShader.use();
 		staticShader.setMat4("projection", projection);
 		staticShader.setMat4("view", view);
-
+		/*
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(250.0f, 0.0f, -10.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		casaDoll.Draw(staticShader);
+		*/
+		
 
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-300.0f, -1.50f, -150.0f));
+		model = glm::scale(model, glm::vec3(1.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		casaPro.Draw(staticShader);
+		
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.2f));
+		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
-		piso.Draw(staticShader);
+		pasto.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
-		model = glm::scale(model, glm::vec3(5.0f));
-		staticShader.setMat4("model", model);
-		casaVieja.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Carro
-		// -------------------------------------------------------------------------------------------------------------------------
+		/*
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::translate(model, glm::vec3(15.0f + movAuto_x, -1.0f, movAuto_z));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -458,9 +473,14 @@ int main()
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
 		llanta.Draw(staticShader);	//Izq trase
+		
+		*/
+		// -------------------------------------------------------------------------------------------------------------------------
+		
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Personaje
 		// -------------------------------------------------------------------------------------------------------------------------
+		/*
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
 		tmp = model = glm::rotate(model, glm::radians(giroMonito), glm::vec3(0.0f, 1.0f, 0.0));
@@ -510,6 +530,8 @@ int main()
 		model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0));
 		staticShader.setMat4("model", model);
 		cabeza.Draw(staticShader);
+		
+		*/
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Caja Transparente --- Siguiente Práctica
 		// -------------------------------------------------------------------------------------------------------------------------
