@@ -281,6 +281,20 @@ int main()
 	// -----------
 	Model casaPro("resources/objects/CasaProyecto/CASABIEN.obj");
 	Model pasto("resources/objects/piso/pastos.obj");
+	
+	//Modelos Jaime
+	Model Arbol1("resources/objects/PatioJ/Arbol1/Arbolnavidad.obj");
+	Model Arbol2("resources/objects/PatioJ/Arbol2/arboln2.obj");
+	Model SillaP("resources/objects/PatioJ/PatioN/Patiojmd.obj");
+	Model Arbol3("resources/objects/PatioJ/Arbol3/Arbol3.obj");
+	Model CamaC("resources/objects/CuartoJ/Cama/Camac.obj");
+	Model Escritorio("resources/objects/CuartoJ/Escritorio/Escritorio.obj");
+	Model Pc("resources/objects/CuartoJ/Pc/pc.obj");
+	Model Tele("resources/objects/CuartoJ/tv/tv.obj");
+	Model LabaJ("resources/objects/BanioJ/laba/Laba.obj");
+	Model TazaJ("resources/objects/BanioJ/Taza/Taza.obj");
+	Model RegaJ("resources/objects/BanioJ/Rega/regadera.obj");
+	Model TinaJ("resources/objects/BanioJ/Tina/Tina.obj");
 	//Model piso("resources/objects/piso/piso.obj");
 	//Model botaDer("resources/objects/Personaje/bota.obj");
 	//Model piernaDer("resources/objects/Personaje/piernader.obj");
@@ -486,7 +500,111 @@ int main()
 		staticShader.setMat4("model", model);
 		llanta.Draw(staticShader);	//Izq trase
 		
+		//JMD
 		
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.50f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Arbol1.Draw(staticShader);
+
+		
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(30.0f, -1.50f, 160.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Arbol2.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-200.0f, -1.50f, 160.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Arbol2.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, -1.50f, 160.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Arbol2.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 1.5f, 180.0f));
+		model = glm::scale(model, glm::vec3(0.001f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		SillaP.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-50.0f, 1.5f, 180.0f));
+		model = glm::scale(model, glm::vec3(0.001f));
+		model = glm::rotate(model, glm::radians(200.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		SillaP.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, -1.5f, 250.0f));
+		model = glm::scale(model, glm::vec3(0.5f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Arbol3.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, -1.5f, 300.0f));
+		model = glm::scale(model, glm::vec3(0.5f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Arbol3.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-50.0f, -1.5f, 250.0f));
+		model = glm::scale(model, glm::vec3(0.5f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Arbol3.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-67.0f, 0.0f, -100.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		CamaC.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-120.0f, -1.3f, -55.0f));
+		model = glm::scale(model, glm::vec3(0.04f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Escritorio.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-126.0f, 4.5f, -55.0f));
+		model = glm::scale(model, glm::vec3(0.08f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Pc.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-167.0f, -2.5f, -110.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Tele.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-240.0f, -2.5f, 18.0f));
+		model = glm::scale(model, glm::vec3(0.5f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		LabaJ.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-280.0f, -2.5f, 47.0f));
+		model = glm::scale(model, glm::vec3(0.75f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		TazaJ.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-297.0f, -1.5f, 20.0f));
+		model = glm::scale(model, glm::vec3(0.5f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		RegaJ.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-225.0f, -2.5f, -10.0f));
+		model = glm::scale(model, glm::vec3(0.5f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		TinaJ.Draw(staticShader);
 		// -------------------------------------------------------------------------------------------------------------------------
 		
 		// -------------------------------------------------------------------------------------------------------------------------
