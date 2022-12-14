@@ -78,8 +78,8 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 // posiciones
 //float x = 0.0f;
 //float y = 0.0f;
-float	movAuto_x = 190.0f,
-		movAuto_z = 80.0f,
+float	movAuto_x = 0.0f,
+		movAuto_z = 0.0f,
 		orienta = 0.0f;
 bool	animacion = false,
 		recorrido1 = true,
@@ -302,12 +302,18 @@ int main()
 	//Model torso("resources/objects/Personaje/torso.obj");
 	//Model brazoDer("resources/objects/Personaje/brazoder.obj");
 	//Model brazoIzq("resources/objects/Personaje/brazoizq.obj");
-	//Model cabeza("resources/objects/Personaje/cabeza.obj");
-	Model carro("resources/objects/lambo/carroceria.obj");
-	Model llanta("resources/objects/lambo/Wheel.obj");
+	//Model cabeza("resources/objects/Personaje/cabeza.obj");;
 	//Model casaVieja("resources/objects/casa/OldHouse.obj");
-	Model cubo("resources/objects/cubo/cube02.obj");
+	//Model cubo("resources/objects/cubo/cube02.obj");
 	//Model casaDoll("resources/objects/casa/DollHouse.obj");
+
+	// Elementos del GARAJE
+	Model GarajeCarro("resources/objects/lambo/carroceria.obj");
+	Model GCarroLlanta("resources/objects/lambo/Wheel.obj");
+	Model GarajeUtCart("resources/objects/Garaje/AuxTable/auxTable.obj");
+	Model GarajeEscalera("resources/objects/Garaje/escaleras/escaleras.obj");
+	Model GarajeMoto("resources/objects/Garaje/moto/moto_blanca.obj");
+	Model GarajeCarroFix("resources/objects/Garaje/coche_averiado/coche_roto.obj");
 	
 	
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
@@ -467,40 +473,64 @@ int main()
 		staticShader.setMat4("model", model);
 		pasto.Draw(staticShader);
 
+		// ---------------------- INSTANCIAS DEL GARAJE --------------------
+		// UtilityCart
+		model = glm::translate(model, glm::vec3(25.0f, 0.0f,-8.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		staticShader.setMat4("model", model);
+		GarajeUtCart.Draw(staticShader);
 
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Carro - Lambo
-		
+		//escaleras
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(165.0f, -1.0f, -45.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		GarajeEscalera.Draw(staticShader);
+
+		// Motocicleta
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(235.0f, -1.0f, 25.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+		staticShader.setMat4("model", model);
+		GarajeMoto.Draw(staticShader);
+
+		// Coche descompuesto
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(205.0f, -1.0f, 20.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f));
+		staticShader.setMat4("model", model);
+		GarajeCarroFix.Draw(staticShader);
+
+		// GarajeCarro - Lambo
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(15.0f + movAuto_x, -1.0f, movAuto_z));
+		model = glm::translate(model, glm::vec3(205.0f + movAuto_x, -1.0f, 80.0f + movAuto_z));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
-		carro.Draw(staticShader);
+		GarajeCarro.Draw(staticShader);
 
 		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, 12.9f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader);	//Izq delantera
+		GCarroLlanta.Draw(staticShader);	//Izq delantera
 
 		model = glm::translate(tmp, glm::vec3(-8.5f, 2.5f, 12.9f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader);	//Der delantera
+		GCarroLlanta.Draw(staticShader);	//Der delantera
 
 		model = glm::translate(tmp, glm::vec3(-8.5f, 2.5f, -14.5f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader);	//Der trasera
+		GCarroLlanta.Draw(staticShader);	//Der trasera
 
 		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, -14.5f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader);	//Izq trase
+		GCarroLlanta.Draw(staticShader);	//Izq trase
 		
-		//JMD
+		// ------------------------------------ JMD
 		
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.50f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.2f));
