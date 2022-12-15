@@ -323,6 +323,7 @@ int main()
 	Model Tina("resources/objects/parteMiguel/Tina/Tina.obj");
 	Model Trineo("resources/objects/parteMiguel/Trineo/Trineo.obj");
 	Model Cochera("resources/objects/parteMiguel/Cochera/Cochera.obj");
+	
 
 	//Modelos Jaime
 	Model Arbol1("resources/objects/PatioJ/Arbol1/Arbolnavidad.obj");
@@ -337,17 +338,6 @@ int main()
 	Model TazaJ("resources/objects/BanioJ/Taza/Taza.obj");
 	Model RegaJ("resources/objects/BanioJ/Rega/regadera.obj");
 	Model TinaJ("resources/objects/BanioJ/Tina/Tina.obj");
-	//Model piso("resources/objects/piso/piso.obj");
-	//Model botaDer("resources/objects/Personaje/bota.obj");
-	//Model piernaDer("resources/objects/Personaje/piernader.obj");
-	//Model piernaIzq("resources/objects/Personaje/piernader.obj");
-	//Model torso("resources/objects/Personaje/torso.obj");
-	//Model brazoDer("resources/objects/Personaje/brazoder.obj");
-	//Model brazoIzq("resources/objects/Personaje/brazoizq.obj");
-	//Model cabeza("resources/objects/Personaje/cabeza.obj");;
-	//Model casaVieja("resources/objects/casa/OldHouse.obj");
-	//Model cubo("resources/objects/cubo/cube02.obj");
-	//Model casaDoll("resources/objects/casa/DollHouse.obj");
 
 	// Elementos del GARAJE
 	Model GarajeCarro("resources/objects/lambo/carroceria.obj");
@@ -358,13 +348,11 @@ int main()
 	Model GarajeCarroFix("resources/objects/Garaje/coche_averiado/coche_roto.obj");
 	// Elementos Cocina
 	Model CocinaBase("resources/objects/Cocina/cocina_base.obj");
+	// Estante
+	Model Estante("resources/objects/estante/estante.obj");
+	//Snowman
+	Model Snowmans("resources/objects/muneco_nieve/snowmans.obj");
 	
-	
-	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
-	//animacionPersonaje.initShaders(animShader.ID);
-
-	//ModelAnim ninja("resources/objects/ZombieWalk/ZombieWalk.dae");
-	//ninja.initShaders(animShader.ID);
 
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
@@ -575,6 +563,24 @@ int main()
 		GCarroLlanta.Draw(staticShader);	//Izq trase
 		
 		// Instancias Banio Garaje
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(157.0f, -2.0f, -20.0f));
+		model = glm::scale(model, glm::vec3(0.6f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Taza.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(107.0f, -2.0f, -20.0f));
+		model = glm::scale(model, glm::vec3(0.6f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Laba.Draw(staticShader);
+
+		//Instancias snowman
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(157.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Snowmans.Draw(staticShader);
 
 		// Instancias Cocina
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(79.0f, -2.0f, -40.0f));
@@ -582,6 +588,15 @@ int main()
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 7.0f));
 		staticShader.setMat4("model", model);
 		CocinaBase.Draw(staticShader);
+
+		// Estante
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(115.0f, -2.0f, 23.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		staticShader.setMat4("model", model);
+		Estante.Draw(staticShader);
+
+		// Muneco de nieve
 
 
 		// ------------------------------------ JMD
@@ -591,8 +606,6 @@ int main()
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		Arbol1.Draw(staticShader);
-
-		
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(30.0f, -1.50f, 160.0f));
 		model = glm::scale(model, glm::vec3(10.0f));
@@ -711,13 +724,11 @@ int main()
 		staticShader.setMat4("model", model);
 		GuitarraC.Draw(staticShader);
 
-
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-220.0f, -3.0f, -100.0f));
 		model = glm::scale(model, glm::vec3(1.3f));
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		MuebleP.Draw(staticShader);
-
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-295.0f, -2.0f, -130.0f));
 		model = glm::scale(model, glm::vec3(0.4f));
@@ -730,7 +741,6 @@ int main()
 		model = glm::rotate(model, glm::radians(trineodir), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		Trineo.Draw(staticShader);
-
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-210.0f, -2.0f, 115.0f));
 		model = glm::scale(model, glm::vec3(0.8f));
