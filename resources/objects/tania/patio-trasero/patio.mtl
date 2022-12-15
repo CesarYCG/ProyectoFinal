@@ -1,0 +1,102 @@
+# Blender 3.3.1 MTL File: 'patio.blend'
+# www.blender.org
+
+newmtl Glass.001
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.319779 0.305616 0.334317
+Ks 0.976821 0.976821 0.976821
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Handle_material.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.578000 0.555000 0.736000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Material.029
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:/Users/tania/Downloads/uploads_files_2532584_textures/EICHEL~1.JPG
+
+newmtl Material.030
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:/Users/tania/Downloads/wooden_planks_2k.blend/textures/wooden_planks_diff_2k.jpg
+
+newmtl Material.031
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl black_metal.001
+Ns 490.000000
+Ka 0.691667 0.691667 0.691667
+Kd 0.004064 0.004064 0.004064
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl marble_texture.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/tania/Downloads/uploads_files_3151601_Tex_grill/marble texture.jpg
+
+newmtl piscina.001
+Ns 585.073059
+Ka 1.000000 1.000000 1.000000
+Ks 0.612583 0.612583 0.612583
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 2
+map_Kd C:/Users/tania/Downloads/piscina.jpg
+map_d patio/texturas/piscina.jpg
+
+newmtl rubber.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl wood_texture.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/tania/Downloads/uploads_files_3151601_Tex_grill/WOOD TEXTURE.jpg

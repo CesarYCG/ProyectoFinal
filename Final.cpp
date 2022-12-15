@@ -1,10 +1,10 @@
 ﻿/* ------------------- PROYECTO FINAL LAB. CGeIHC -------------------
 *  -------------------       SEMESTRE 2023-1      -------------------
 *  ALUMNOS Y NO. DE CUENTA:
-*  César Yair Calderón Guevara - 316277211
-* 
-* 
-* 
+*  César Yair Calderón Guevara		316277211
+*  Miguel Angel Luna Colmenares		316060370
+*  Jaime Moreno Duran				316064378
+*  Tania Lizeth Peñaloza Lugo		316013929
 */
 #include <Windows.h>
 #include <glad/glad.h>
@@ -91,6 +91,14 @@ bool	animacion = false,
 		abrir = false,
 		recorrido4 = false;
 
+// Variables de control para animaciones
+
+bool anim_auto = false, // Variables para animacion de auto en garage
+anim_a1 = false,
+anim_a2 = false,
+anim_a3 = false,
+anim_a4 = false,
+anim_a5 = false;
 
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
@@ -163,7 +171,7 @@ void interpolation(void)
 void animate(void)
 {
 	t += 0.003;
-	trineoz = 700.0f * cos(t);
+	trineoz = 700.0f * cos(t); // Variables para animacion de trineo
 	trineox = 700.0f * sin(t);
 	open = 1 * cos(t);
 
@@ -199,25 +207,89 @@ void animate(void)
 			i_curr_steps++;
 		}
 	}
-	if (abrir)
-	{
-		if (bandera1 == 0)
-		{
-			aux += 0.003;
-			open = 300 * sin(aux);
-		}
-		if (aux >= 0.3f)
-		{
-			bandera1 = 1;
-			open = 300 * sin(aux);
-		}
 
-	}
-	//Vehículo
-	if (animacion)
-	{
-		movAuto_z += 3.0f;
-	}
+	// Vehículo Y animacion de Garage
+	if (anim_auto) {
+		if (abrir) {
+			if (bandera1 == 0)
+			{
+				aux += 0.003;
+				open = 300 * sin(aux);
+			}
+			if (aux >= 0.3f)
+			{
+				bandera1 = 1;
+				open = 300 * sin(aux);
+				
+				//abrir = false;
+			} // bandera
+		} // abrir
+		if (anim_a1) { // Comienza movimiento del coche
+			if (aux >= 0.3f) {
+				movAuto_z += 3.0f;
+				movAuto_x = 0.0f;
+				orienta = 0.0f;
+				if (movAuto_z >= 250.0f) {
+					anim_a1 = false;
+					anim_a2 = true; // Comienza segunda parte
+					printf("a1 reach");
+				}
+			}
+		} // anim_a1
+		if (anim_a2) {
+			orienta = -90.0f;
+			movAuto_z = 250.0f;
+			movAuto_x += -3.0f;
+			if (movAuto_x <= -150.0f) {
+				anim_a2 = false;
+				anim_a3 = true;
+				printf("a2 reach");
+			}
+		} // anim_a2
+		if (anim_a3) {
+			orienta = -180.0f;
+			movAuto_z -= 2.0f;
+			movAuto_x = -150.0f;
+			if (movAuto_z <= 100.0f) {
+				anim_a3 = false;
+				anim_a4 = true;
+				printf("a3 reach");
+			}
+		}// anim_a3
+		if (anim_a4) {
+			orienta = -270.0f;
+			movAuto_x += 3.0f;
+			movAuto_z = 100.0f;
+			if (movAuto_x >= 0.0f) {
+				anim_a5 = true;
+				anim_a4 = false;
+				printf("a4 reach");
+			}
+		}// anim_a4
+		if (anim_a5) { // Se mete en reversa, bien chido
+			orienta = 0.0f;
+			movAuto_z -= 1.0f;
+			movAuto_x = 0.0f;
+			if (movAuto_z <= 0.0f) {
+				movAuto_z = 0.0f;
+
+				// Cerrando garaje
+				if (bandera1 == 1) {
+					aux -= 0.003;
+					open = 300 * sin(aux);
+				}
+				if (aux <= 0.0f) { // termina de cerrarse
+					anim_a5 = false;
+					//aux = 0.0f;
+					bandera1 = 0;
+					open = 300 * sin(aux);
+					anim_auto = false;
+					abrir = false;
+				}
+			}
+		} // anim_a5
+	} // anim_auto
+
 }
 
 void getResolution()
@@ -440,58 +512,11 @@ int main()
 		
 
 		// -------------------------------------------------------------------------------------------------------------------------
-		// Personaje Animacion
-		// -------------------------------------------------------------------------------------------------------------------------
-		//Remember to activate the shader with the animation
-
-		/*
-		animShader.use();
-		animShader.setMat4("projection", projection);
-		animShader.setMat4("view", view);
-	
-		animShader.setVec3("material.specular", glm::vec3(0.5f));
-		animShader.setFloat("material.shininess", 32.0f);
-		animShader.setVec3("light.ambient", ambientColor);
-		animShader.setVec3("light.diffuse", diffuseColor);
-		animShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-		animShader.setVec3("light.direction", lightDirection);
-		animShader.setVec3("viewPos", camera.Position);
-
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-40.3f, 1.75f, 0.3f)); // translate it down so it's at the center of the scene
-		model = glm::scale(model, glm::vec3(1.2f));	// it's a bit too big for our scene, so scale it down
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		animShader.setMat4("model", model);
-		animacionPersonaje.Draw(animShader);
-		*/
-		
-
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Segundo Personaje Animacion
-		// -------------------------------------------------------------------------------------------------------------------------
-
-		/*
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(40.3f, 1.75f, 0.3f)); // translate it down so it's at the center of the scene
-		model = glm::scale(model, glm::vec3(0.5f));	// it's a bit too big for our scene, so scale it down
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		animShader.setMat4("model", model);
-		ninja.Draw(animShader);
-		
-		*/
-		
-
-		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
 		// -------------------------------------------------------------------------------------------------------------------------
 		staticShader.use();
 		staticShader.setMat4("projection", projection);
 		staticShader.setMat4("view", view);
-		/*
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(250.0f, 0.0f, -10.0f));
-		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		casaDoll.Draw(staticShader);
-		*/
-		
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-300.0f, -1.50f, -150.0f));
 		model = glm::scale(model, glm::vec3(1.0f));
@@ -565,7 +590,6 @@ int main()
 		// Instancias Banio Garaje
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(157.0f, -2.0f, -20.0f));
 		model = glm::scale(model, glm::vec3(0.6f));
-		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		Taza.Draw(staticShader);
 
@@ -596,11 +620,7 @@ int main()
 		staticShader.setMat4("model", model);
 		Estante.Draw(staticShader);
 
-		// Muneco de nieve
-
-
 		// ------------------------------------ JMD
-		
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.50f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.2f));
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -802,77 +822,8 @@ int main()
 		staticShader.setMat4("model", model);
 		MuebleRope.Draw(staticShader);
 
+		// ------------------------------ Parte de Tania
 
-		// -------------------------------------------------------------------------------------------------------------------------
-		
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Personaje
-		// -------------------------------------------------------------------------------------------------------------------------
-		/*
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
-		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		tmp = model = glm::rotate(model, glm::radians(giroMonito), glm::vec3(0.0f, 1.0f, 0.0));
-		staticShader.setMat4("model", model);
-		torso.Draw(staticShader);
-
-		//Pierna Der
-		model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		piernaDer.Draw(staticShader);
-
-		//Pie Der
-		model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		staticShader.setMat4("model", model);
-		botaDer.Draw(staticShader);
-
-		//Pierna Izq
-		model = glm::translate(tmp, glm::vec3(0.5f, 0.0f, -0.1f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		piernaIzq.Draw(staticShader);
-
-		//Pie Iz
-		model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		staticShader.setMat4("model", model);
-		botaDer.Draw(staticShader);	//Izq trase
-
-		//Brazo derecho
-		model = glm::translate(tmp, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-0.75f, 2.5f, 0));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		brazoDer.Draw(staticShader);
-
-		//Brazo izquierdo
-		model = glm::translate(tmp, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(0.75f, 2.5f, 0));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		brazoIzq.Draw(staticShader);
-
-		//Cabeza
-		model = glm::translate(tmp, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0));
-		staticShader.setMat4("model", model);
-		cabeza.Draw(staticShader);
-		
-		*/
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Caja Transparente --- Siguiente Práctica
-		// -------------------------------------------------------------------------------------------------------------------------
-		/*glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
-		model = glm::scale(model, glm::vec3(5.0f));
-		staticShader.setMat4("model", model);
-		cubo.Draw(staticShader);
-		glEnable(GL_BLEND);*/
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Termina Escenario
-		// -------------------------------------------------------------------------------------------------------------------------
 
 		//-------------------------------------------------------------------------------------
 		// draw skybox as last
@@ -904,6 +855,7 @@ int main()
 // ---------------------------------------------------------------------------------------------------------
 void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
+	// Movement and Project manipulation
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
@@ -914,6 +866,7 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		camera.ProcessKeyboard(LEFT, (float)deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, (float)deltaTime);
+
 	//To Configure Model
 	if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
 		posZ++;
@@ -935,11 +888,18 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		lightPosition.x++;
 	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
 		lightPosition.x--;
+	// Animacion Cochera y Auto
+	if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS) {
+		anim_auto = true;
+		abrir = true;
+		anim_a1 = true;
+	}
+		
+
 	// Reproduccion Musical
 	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
 		play_music();
-	if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
-		abrir = true;
+
 
 	//Car animation
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
