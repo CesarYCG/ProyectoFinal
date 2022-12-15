@@ -356,6 +356,8 @@ int main()
 	Model GarajeEscalera("resources/objects/Garaje/escaleras/escaleras.obj");
 	Model GarajeMoto("resources/objects/Garaje/moto/moto_blanca.obj");
 	Model GarajeCarroFix("resources/objects/Garaje/coche_averiado/coche_roto.obj");
+	// Elementos Cocina
+	Model CocinaBase("resources/objects/Cocina/cocina_base.obj");
 	
 	
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
@@ -572,6 +574,16 @@ int main()
 		staticShader.setMat4("model", model);
 		GCarroLlanta.Draw(staticShader);	//Izq trase
 		
+		// Instancias Banio Garaje
+
+		// Instancias Cocina
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(79.0f, -2.0f, -40.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 7.0f));
+		staticShader.setMat4("model", model);
+		CocinaBase.Draw(staticShader);
+
+
 		// ------------------------------------ JMD
 		
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.50f, 0.0f));
