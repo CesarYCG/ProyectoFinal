@@ -314,6 +314,9 @@ int main()
 	Model GarajeEscalera("resources/objects/Garaje/escaleras/escaleras.obj");
 	Model GarajeMoto("resources/objects/Garaje/moto/moto_blanca.obj");
 	Model GarajeCarroFix("resources/objects/Garaje/coche_averiado/coche_roto.obj");
+
+	// Elementos Cocina
+	Model CocinaBase("resources/objects/Cocina/cocina_base.obj");
 	
 	
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
@@ -340,7 +343,7 @@ int main()
 	while (!glfwWindowShouldClose(window))
 	{
 		skyboxShader.setInt("skybox", 0);
-		
+
 		// per-frame time logic
 		// --------------------
 		lastFrame = SDL_GetTicks();
@@ -405,7 +408,7 @@ int main()
 		glm::vec3 lightColor = glm::vec3(0.6f);
 		glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
 		glm::vec3 ambientColor = diffuseColor * glm::vec3(0.75f);
-		
+
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Personaje Animacion
@@ -416,7 +419,7 @@ int main()
 		animShader.use();
 		animShader.setMat4("projection", projection);
 		animShader.setMat4("view", view);
-	
+
 		animShader.setVec3("material.specular", glm::vec3(0.5f));
 		animShader.setFloat("material.shininess", 32.0f);
 		animShader.setVec3("light.ambient", ambientColor);
@@ -431,7 +434,7 @@ int main()
 		animShader.setMat4("model", model);
 		animacionPersonaje.Draw(animShader);
 		*/
-		
+
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Segundo Personaje Animacion
@@ -443,9 +446,9 @@ int main()
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
 		ninja.Draw(animShader);
-		
+
 		*/
-		
+
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -459,14 +462,14 @@ int main()
 		staticShader.setMat4("model", model);
 		casaDoll.Draw(staticShader);
 		*/
-		
+
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-300.0f, -1.50f, -150.0f));
 		model = glm::scale(model, glm::vec3(1.0f));
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		casaPro.Draw(staticShader);
-		
+
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
@@ -475,7 +478,7 @@ int main()
 
 		// ---------------------- INSTANCIAS DEL GARAJE --------------------
 		// UtilityCart
-		model = glm::translate(model, glm::vec3(25.0f, 0.0f,-8.0f));
+		model = glm::translate(model, glm::vec3(25.0f, 0.0f, -8.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
 		GarajeUtCart.Draw(staticShader);
@@ -529,7 +532,18 @@ int main()
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
 		GCarroLlanta.Draw(staticShader);	//Izq trase
-		
+
+		// Instancias del Banio Garaje
+
+		// Instancias Cocina
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(79.0f, -2.0f, -40.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 7.0f));
+		staticShader.setMat4("model", model);
+		CocinaBase.Draw(staticShader);
+
+		// Instancias Pasillos
+
 		// ------------------------------------ JMD
 		
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.50f, 0.0f));

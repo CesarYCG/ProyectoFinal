@@ -2,11 +2,11 @@
 E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\include\shader_m.h(44,40): warning C4101: 'e': variable local sin referencia
 E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\include\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
 E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\include\modelAnim.h(520,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(824,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(825,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(829,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(830,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(832,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(833,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(841,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(838,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(839,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(843,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(844,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(846,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(847,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(855,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
   ProyectoFinal.vcxproj -> E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Debug\ProyectoFinal.exe
