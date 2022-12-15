@@ -78,13 +78,17 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 // posiciones
 //float x = 0.0f;
 //float y = 0.0f;
+float t = 0, trineoz = 0, trineox = 0, trineodir = 0, aux = 0;
 float	movAuto_x = 0.0f,
 		movAuto_z = 0.0f,
+		open = 0.0f,
+		bandera1 = 0.0f,
 		orienta = 0.0f;
 bool	animacion = false,
 		recorrido1 = true,
 		recorrido2 = false,
 		recorrido3 = false,
+		abrir = false,
 		recorrido4 = false;
 
 
@@ -155,8 +159,14 @@ void interpolation(void)
 
 }
 
+
 void animate(void)
 {
+	t += 0.003;
+	trineoz = 700.0f * cos(t);
+	trineox = 700.0f * sin(t);
+	open = 1 * cos(t);
+
 	if (play)
 	{
 		if (i_curr_steps >= i_max_steps) //end of animation between frames?
@@ -189,7 +199,20 @@ void animate(void)
 			i_curr_steps++;
 		}
 	}
+	if (abrir)
+	{
+		if (bandera1 == 0)
+		{
+			aux += 0.003;
+			open = 300 * sin(aux);
+		}
+		if (aux >= 0.3f)
+		{
+			bandera1 = 1;
+			open = 300 * sin(aux);
+		}
 
+	}
 	//Vehículo
 	if (animacion)
 	{
@@ -282,6 +305,25 @@ int main()
 	Model casaPro("resources/objects/CasaProyecto/CASABIEN.obj");
 	Model pasto("resources/objects/piso/pastos.obj");
 	
+
+	//Modelos Miguel 
+	Model Rega("resources/objects/parteMiguel/Regadera/regadera.obj");
+	Model cama("resources/objects/parteMiguel/Cama/CAMA.obj");
+	Model MuebleP("resources/objects/parteMiguel/Mueblepeque/Mueblepeque.obj");
+	Model MuebleRope("resources/objects/parteMiguel/Muebleropero/Muebleropero.obj");
+	Model MesaMedia("resources/objects/parteMiguel/MesaMedia/Mesamedia.obj");
+	Model Taza("resources/objects/parteMiguel/Taza/Taza.obj");
+	Model Laba("resources/objects/parteMiguel/laba/Laba.obj");
+	Model Planta("resources/objects/parteMiguel/planta/planta.obj");
+	Model MesaCoci("resources/objects/parteMiguel/Mesa/Mesa.obj");
+	Model MesaCen("resources/objects/parteMiguel/MesaCen/MesaCen.obj");
+	Model GuitarraC("resources/objects/parteMiguel/GuitarraC/GuitarraC.obj");
+	Model MuebleEx1("resources/objects/parteMiguel/MuebleEx1/MuebleEx1.obj");
+	Model MuebleEx2("resources/objects/parteMiguel/MuebleEx2/MuebleEx2.obj");
+	Model Tina("resources/objects/parteMiguel/Tina/Tina.obj");
+	Model Trineo("resources/objects/parteMiguel/Trineo/Trineo.obj");
+	Model Cochera("resources/objects/parteMiguel/Cochera/Cochera.obj");
+
 	//Modelos Jaime
 	Model Arbol1("resources/objects/PatioJ/Arbol1/Arbolnavidad.obj");
 	Model Arbol2("resources/objects/PatioJ/Arbol2/arboln2.obj");
@@ -314,9 +356,6 @@ int main()
 	Model GarajeEscalera("resources/objects/Garaje/escaleras/escaleras.obj");
 	Model GarajeMoto("resources/objects/Garaje/moto/moto_blanca.obj");
 	Model GarajeCarroFix("resources/objects/Garaje/coche_averiado/coche_roto.obj");
-
-	// Elementos Cocina
-	Model CocinaBase("resources/objects/Cocina/cocina_base.obj");
 	
 	
 	//ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
@@ -343,7 +382,7 @@ int main()
 	while (!glfwWindowShouldClose(window))
 	{
 		skyboxShader.setInt("skybox", 0);
-
+		
 		// per-frame time logic
 		// --------------------
 		lastFrame = SDL_GetTicks();
@@ -408,7 +447,7 @@ int main()
 		glm::vec3 lightColor = glm::vec3(0.6f);
 		glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
 		glm::vec3 ambientColor = diffuseColor * glm::vec3(0.75f);
-
+		
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Personaje Animacion
@@ -419,7 +458,7 @@ int main()
 		animShader.use();
 		animShader.setMat4("projection", projection);
 		animShader.setMat4("view", view);
-
+	
 		animShader.setVec3("material.specular", glm::vec3(0.5f));
 		animShader.setFloat("material.shininess", 32.0f);
 		animShader.setVec3("light.ambient", ambientColor);
@@ -434,7 +473,7 @@ int main()
 		animShader.setMat4("model", model);
 		animacionPersonaje.Draw(animShader);
 		*/
-
+		
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Segundo Personaje Animacion
@@ -446,9 +485,9 @@ int main()
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
 		ninja.Draw(animShader);
-
+		
 		*/
-
+		
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -462,14 +501,14 @@ int main()
 		staticShader.setMat4("model", model);
 		casaDoll.Draw(staticShader);
 		*/
-
+		
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-300.0f, -1.50f, -150.0f));
 		model = glm::scale(model, glm::vec3(1.0f));
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		casaPro.Draw(staticShader);
-
+		
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
@@ -478,7 +517,7 @@ int main()
 
 		// ---------------------- INSTANCIAS DEL GARAJE --------------------
 		// UtilityCart
-		model = glm::translate(model, glm::vec3(25.0f, 0.0f, -8.0f));
+		model = glm::translate(model, glm::vec3(25.0f, 0.0f,-8.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
 		GarajeUtCart.Draw(staticShader);
@@ -532,18 +571,7 @@ int main()
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
 		GCarroLlanta.Draw(staticShader);	//Izq trase
-
-		// Instancias del Banio Garaje
-
-		// Instancias Cocina
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(79.0f, -2.0f, -40.0f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 7.0f));
-		staticShader.setMat4("model", model);
-		CocinaBase.Draw(staticShader);
-
-		// Instancias Pasillos
-
+		
 		// ------------------------------------ JMD
 		
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.50f, 0.0f));
@@ -649,6 +677,110 @@ int main()
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		TinaJ.Draw(staticShader);
+
+		// ------------------------------------ PARTE DE MIGUEL 
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(214.5f, 15.50f, 122.0f));
+		model = glm::scale(model, glm::vec3(1.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(open), glm::vec3(0.0f, 0.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		Cochera.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-300.0f, 3.1f, -100.0f));
+		model = glm::scale(model, glm::vec3(0.15f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		cama.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-200.0f, -0.2f, -100.0f));
+		model = glm::scale(model, glm::vec3(0.4f));
+		model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		GuitarraC.Draw(staticShader);
+
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-220.0f, -3.0f, -100.0f));
+		model = glm::scale(model, glm::vec3(1.3f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		MuebleP.Draw(staticShader);
+
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-295.0f, -2.0f, -130.0f));
+		model = glm::scale(model, glm::vec3(0.4f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		MesaMedia.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(trineox, 150.0f, trineoz));
+		model = glm::scale(model, glm::vec3(0.4f));
+		model = glm::rotate(model, glm::radians(trineodir), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Trineo.Draw(staticShader);
+
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-210.0f, -2.0f, 115.0f));
+		model = glm::scale(model, glm::vec3(0.8f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Taza.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-210.0f, -2.0f, 30.0f));
+		model = glm::scale(model, glm::vec3(0.3f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Planta.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-230.0f, -2.0f, 25.0f));
+		model = glm::scale(model, glm::vec3(0.4f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		MuebleEx1.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-190.0f, -2.0f, 117.0f));
+		model = glm::scale(model, glm::vec3(0.6f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Laba.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-180.0f, -2.0f, 70.0f));
+		model = glm::scale(model, glm::vec3(0.2f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		MuebleEx2.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-290.0f, -15.0f, 117.0f));
+		model = glm::scale(model, glm::vec3(0.8f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Rega.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-270.0f, -2.0f, 56.0f));
+		model = glm::scale(model, glm::vec3(0.4f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Tina.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.5f, -100.0f));
+		model = glm::scale(model, glm::vec3(0.36f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		MesaCoci.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-40.0f, -1.5f, -100.0f));
+		model = glm::scale(model, glm::vec3(0.4f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		MesaCen.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-220.0f, -1.5f, -55.0f));
+		model = glm::scale(model, glm::vec3(0.40f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		MuebleRope.Draw(staticShader);
+
+
 		// -------------------------------------------------------------------------------------------------------------------------
 		
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -748,7 +880,7 @@ int main()
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
-void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
+void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
@@ -784,6 +916,8 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 	// Reproduccion Musical
 	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
 		play_music();
+	if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
+		abrir = true;
 
 	//Car animation
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
