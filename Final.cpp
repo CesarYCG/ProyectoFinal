@@ -26,12 +26,13 @@
 #include <Skybox.h>
 #include <iostream>
 
+
 // --------------- REPRODUCCION MUSICAL --------------------------
 
 // Pragma para reproducir audio .wav o mp3
 #pragma comment(lib, "winmm.lib")
 bool music = true, // Variable para activar musica
-	 current_song = false; // Cancion, se vuelve True si se reproduce bien
+current_song = false; // Cancion, se vuelve True si se reproduce bien
 
 // Funcion para reproducir musica
 void play_music() {
@@ -54,7 +55,7 @@ void animate(void);
 // settings
 unsigned int SCR_WIDTH = 800;
 unsigned int SCR_HEIGHT = 600;
-GLFWmonitor *monitors;
+GLFWmonitor* monitors;
 
 void getResolution(void);
 
@@ -69,7 +70,7 @@ bool firstMouse = true;
 const int FPS = 60;
 const int LOOP_TIME = 1000 / FPS; // = 16 milisec // 1000 millisec == 1 sec
 double	deltaTime = 0.0f,
-		lastFrame = 0.0f;
+lastFrame = 0.0f;
 
 //Lighting
 glm::vec3 lightPosition(0.0f, 4.0f, -10.0f);
@@ -78,11 +79,13 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 // posiciones
 //float x = 0.0f;
 //float y = 0.0f;
-float t = 0, trineoz = 0, trineox = 0, trineodir = 0, aux = 0;
+int var33 = 0;
+float   trineoz = -300.0f, trineox = -300.0f, trineodir = 900, aux = 0;
 float	movAuto_x = 0.0f,
 		movAuto_z = 0.0f,
 		open = 0.0f,
 		bandera1 = 0.0f,
+		orientaT = 0.0f,
 		orienta = 0.0f;
 bool	animacion = false,
 		recorrido1 = true,
@@ -90,7 +93,6 @@ bool	animacion = false,
 		recorrido3 = false,
 		abrir = false,
 		recorrido4 = false;
-
 // Variables de control para animaciones
 
 bool anim_auto = false, // Variables para animacion de auto en garage
@@ -112,7 +114,7 @@ float	incX = 0.0f,
 		rotInc = 0.0f,
 		giroMonitoInc = 0.0f;
 
-#define MAX_FRAMES 9
+#define MAX_FRAMES 40
 int i_max_steps = 60;
 int i_curr_steps = 0;
 typedef struct _frame
@@ -142,7 +144,6 @@ void saveFrame(void)
 
 	KeyFrame[FrameIndex].rotRodIzq = rotRodIzq;
 	KeyFrame[FrameIndex].giroMonito = giroMonito;
-
 	FrameIndex++;
 }
 
@@ -164,16 +165,57 @@ void interpolation(void)
 
 	rotInc = (KeyFrame[playIndex + 1].rotRodIzq - KeyFrame[playIndex].rotRodIzq) / i_max_steps;
 	giroMonitoInc = (KeyFrame[playIndex + 1].giroMonito - KeyFrame[playIndex].giroMonito) / i_max_steps;
-
 }
 
 
 void animate(void)
 {
-	t += 0.003;
-	trineoz = 700.0f * cos(t); // Variables para animacion de trineo
-	trineox = 700.0f * sin(t);
-	open = 1 * cos(t);
+	// Variables para animacion de trineo
+	if (var33 == 0)
+	{
+		trineox += 3.0f;
+		trineoz = trineoz;
+		orientaT = 180.0f;
+		if (trineox >= 300.0f)
+		{
+			var33 = 1;
+
+		}
+	}
+	if (var33 == 1)
+	{
+		trineox = trineox;
+		trineoz += 3.0f;
+		orientaT = 90.0f;
+		if (trineoz >= 300.0f)
+		{
+			var33 = 2;
+
+		}
+	}
+	if (var33 == 2)
+	{
+		trineox -= 3.0f;
+		trineoz = trineoz;
+		orientaT = 0.0f;
+		if (trineox <= -300.0f)
+		{
+			var33 = 3;
+
+		}
+	}
+	if (var33 == 3)
+	{
+		trineox = trineox;
+		trineoz -= 3.0f;
+		orientaT = -90.0f;
+		if (trineoz <= -300.0f)
+		{
+			var33 = 0;
+
+		}
+
+	}
 
 	if (play)
 	{
@@ -207,7 +249,11 @@ void animate(void)
 			i_curr_steps++;
 		}
 	}
-
+	//Vehículo
+	if (animacion)
+	{
+		movAuto_z += 3.0f;
+	}
 	// Vehículo Y animacion de Garage
 	if (anim_auto) {
 		if (abrir) {
@@ -220,7 +266,7 @@ void animate(void)
 			{
 				bandera1 = 1;
 				open = 300 * sin(aux);
-				
+
 				//abrir = false;
 			} // bandera
 		} // abrir
@@ -289,16 +335,17 @@ void animate(void)
 			}
 		} // anim_a5
 	} // anim_auto
-
 }
 
 void getResolution()
 {
-	const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
 	SCR_WIDTH = mode->width;
 	SCR_HEIGHT = (mode->height) - 80;
 }
+
+
 
 
 int main()
@@ -376,7 +423,7 @@ int main()
 	// -----------
 	Model casaPro("resources/objects/CasaProyecto/CASABIEN.obj");
 	Model pasto("resources/objects/piso/pastos.obj");
-	
+
 
 	//Modelos Miguel 
 	Model Rega("resources/objects/parteMiguel/Regadera/regadera.obj");
@@ -395,7 +442,7 @@ int main()
 	Model Tina("resources/objects/parteMiguel/Tina/Tina.obj");
 	Model Trineo("resources/objects/parteMiguel/Trineo/Trineo.obj");
 	Model Cochera("resources/objects/parteMiguel/Cochera/Cochera.obj");
-	
+
 
 	//Modelos Jaime
 	Model Arbol1("resources/objects/PatioJ/Arbol1/Arbolnavidad.obj");
@@ -424,7 +471,7 @@ int main()
 	Model Estante("resources/objects/estante/estante.obj");
 	//Snowman
 	Model Snowmans("resources/objects/muneco_nieve/snowmans.obj");
-	
+
 
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
@@ -435,6 +482,7 @@ int main()
 		KeyFrame[i].rotRodIzq = 0;
 		KeyFrame[i].giroMonito = 0;
 	}
+	
 
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -444,7 +492,7 @@ int main()
 	while (!glfwWindowShouldClose(window))
 	{
 		skyboxShader.setInt("skybox", 0);
-		
+
 		// per-frame time logic
 		// --------------------
 		lastFrame = SDL_GetTicks();
@@ -509,6 +557,15 @@ int main()
 		glm::vec3 lightColor = glm::vec3(0.6f);
 		glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
 		glm::vec3 ambientColor = diffuseColor * glm::vec3(0.75f);
+
+
+		
+		// -------------------------------------------------------------------------------------------------------------------------
+		// Escenario
+		// -------------------------------------------------------------------------------------------------------------------------
+		staticShader.use();
+		staticShader.setMat4("projection", projection);
+		staticShader.setMat4("view", view);
 		
 
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -523,7 +580,7 @@ int main()
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		casaPro.Draw(staticShader);
-		
+
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 		model = glm::scale(model, glm::vec3(8.0f));
@@ -532,7 +589,7 @@ int main()
 
 		// ---------------------- INSTANCIAS DEL GARAJE --------------------
 		// UtilityCart
-		model = glm::translate(model, glm::vec3(25.0f, 0.0f,-8.0f));
+		model = glm::translate(model, glm::vec3(25.0f, 0.0f, -8.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
 		GarajeUtCart.Draw(staticShader);
@@ -586,7 +643,7 @@ int main()
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
 		GCarroLlanta.Draw(staticShader);	//Izq trase
-		
+
 		// Instancias Banio Garaje
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(157.0f, -2.0f, -20.0f));
 		model = glm::scale(model, glm::vec3(0.6f));
@@ -725,6 +782,14 @@ int main()
 
 		// ------------------------------------ PARTE DE MIGUEL 
 
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(trineox, 150.0f, trineoz));
+		model = glm::scale(model, glm::vec3(0.4f));
+		model = glm::rotate(model, glm::radians(orientaT), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Trineo.Draw(staticShader);
+
+
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(214.5f, 15.50f, 122.0f));
 		model = glm::scale(model, glm::vec3(1.0f));
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -744,6 +809,7 @@ int main()
 		staticShader.setMat4("model", model);
 		GuitarraC.Draw(staticShader);
 
+
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-220.0f, -3.0f, -100.0f));
 		model = glm::scale(model, glm::vec3(1.3f));
 		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -756,11 +822,6 @@ int main()
 		staticShader.setMat4("model", model);
 		MesaMedia.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(trineox, 150.0f, trineoz));
-		model = glm::scale(model, glm::vec3(0.4f));
-		model = glm::rotate(model, glm::radians(trineodir), glm::vec3(1.0f, 0.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		Trineo.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-210.0f, -2.0f, 115.0f));
 		model = glm::scale(model, glm::vec3(0.8f));
@@ -822,8 +883,8 @@ int main()
 		staticShader.setMat4("model", model);
 		MuebleRope.Draw(staticShader);
 
-		// ------------------------------ Parte de Tania
 
+		// ------------------------------ Parte de Tania
 
 		//-------------------------------------------------------------------------------------
 		// draw skybox as last
@@ -851,6 +912,8 @@ int main()
 	return 0;
 }
 
+// process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
+// ---------------------------------------------------------------------------------------------------------
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
 void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
@@ -894,7 +957,7 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		abrir = true;
 		anim_a1 = true;
 	}
-		
+
 
 	// Reproduccion Musical
 	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
