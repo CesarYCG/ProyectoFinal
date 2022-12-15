@@ -118,8 +118,8 @@ Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 illum 2
-map_Kd C:/Users/tania/Downloads/uploads_files_2999904_maps/picture_1.jpg
-map_d C:/Users/tania/Downloads/uploads_files_2999904_maps/picture_1.jpg
+map_Kd picture_1.jpg
+map_d picture_1.jpg
 
 newmtl plastic
 Ns 450.095367
@@ -129,7 +129,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 3
-map_Kd C:/Users/tania/Downloads/uploads_files_2838402_reloj/old_hall_4k.hdr
+map_Kd old_hall_4k.hdr
 
 newmtl teclado1
 Ns 200.000000

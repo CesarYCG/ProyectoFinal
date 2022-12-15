@@ -29,7 +29,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd C:/Users/tania/Downloads/uploads_files_2532584_textures/EICHEL~1.JPG
+map_Kd EICHEL_1.JPG
 
 newmtl Material.030
 Ns 0.000000
@@ -39,7 +39,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd C:/Users/tania/Downloads/wooden_planks_2k.blend/textures/wooden_planks_diff_2k.jpg
+map_Kd wooden_planks_diff_2k.jpg
 
 newmtl Material.031
 Ns 250.000000
@@ -69,7 +69,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:/Users/tania/Downloads/uploads_files_3151601_Tex_grill/marble texture.jpg
+map_Kd marble_texture.jpg
 
 newmtl piscina.001
 Ns 585.073059
@@ -78,8 +78,8 @@ Ks 0.612583 0.612583 0.612583
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 illum 2
-map_Kd C:/Users/tania/Downloads/piscina.jpg
-map_d patio/texturas/piscina.jpg
+map_Kd piscina.jpg
+map_d piscina.jpg
 
 newmtl rubber.001
 Ns 250.000000
@@ -99,4 +99,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:/Users/tania/Downloads/uploads_files_3151601_Tex_grill/WOOD TEXTURE.jpg
+map_Kd WOOD_TEXTURE.jpg
