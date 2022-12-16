@@ -472,6 +472,9 @@ int main()
 	//Snowman
 	Model Snowmans("resources/objects/muneco_nieve/snowmans.obj");
 
+	// Modelos Tania
+	Model PatExterno("resources/objects/tania/patio-trasero/patio.obj");
+
 
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
@@ -586,6 +589,7 @@ int main()
 		model = glm::scale(model, glm::vec3(8.0f));
 		staticShader.setMat4("model", model);
 		pasto.Draw(staticShader);
+
 
 		// ---------------------- INSTANCIAS DEL GARAJE --------------------
 		// UtilityCart
@@ -883,8 +887,12 @@ int main()
 		staticShader.setMat4("model", model);
 		MuebleRope.Draw(staticShader);
 
-
-		// ------------------------------ Parte de Tania
+		// -------------------- Tania models
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(30.0f, -1.0f, -300.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(6.0f));
+		staticShader.setMat4("model", model);
+		PatExterno.Draw(staticShader);
 
 		//-------------------------------------------------------------------------------------
 		// draw skybox as last

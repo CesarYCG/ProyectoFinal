@@ -2,21 +2,20 @@
 E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\include\shader_m.h(44,40): warning C4101: 'e': variable local sin referencia
 E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\include\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
 E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\include\modelAnim.h(520,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(173,12): warning C4305: '+=': truncamiento de 'double' a 'float'
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(216,17): warning C4305: '+=': truncamiento de 'double' a 'float'
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(278,18): warning C4305: '-=': truncamiento de 'double' a 'float'
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(954,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(955,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(959,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(960,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(962,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(963,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(971,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(262,17): warning C4305: '+=': truncamiento de 'double' a 'float'
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(324,18): warning C4305: '-=': truncamiento de 'double' a 'float'
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(1025,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(1026,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(1030,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(1031,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(1033,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(1034,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(1042,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
 glfw3.lib(context.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(context.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 glfw3.lib(init.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(init.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 glfw3.lib(input.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(input.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 glfw3.lib(monitor.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(monitor.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-glfw3.lib(vulkan.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(vulkan.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(vulkan.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(vulkan.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 glfw3.lib(window.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(window.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 glfw3.lib(win32_init.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_init.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 glfw3.lib(win32_joystick.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_joystick.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
