@@ -1,0 +1,35 @@
+﻿  Final.cpp
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\include\shader_m.h(44,40): warning C4101: 'e': variable local sin referencia
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\include\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\include\modelAnim.h(520,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(259,17): warning C4305: '+=': truncamiento de 'double' a 'float'
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(321,18): warning C4305: '-=': truncamiento de 'double' a 'float'
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(1022,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(1023,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(1027,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(1028,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(1030,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(1031,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\ProyectoFinal\Final.cpp(1039,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+LINK : warning LNK4098: la biblioteca predeterminada'MSVCRTD' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
+  Generando código
+  4 of 908 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    15 functions had inline decision re-evaluated but remain unchanged
+  Generación de código finalizada
+glfw3.lib(context.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(context.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(init.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(init.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(input.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(input.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(monitor.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(monitor.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(vulkan.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(vulkan.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(window.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(window.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_init.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_init.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_joystick.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_joystick.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_monitor.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_monitor.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_time.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_time.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_thread.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_thread.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_window.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_window.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(wgl_context.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(wgl_context.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(egl_context.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(egl_context.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(osmesa_context.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(osmesa_context.obj)' o en 'E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+  ProyectoFinal.vcxproj -> E:\UNIVERSIDAD_INGENIERIA\SEMESTRE_9_NEW\COMPU_GRAFICA\ProyectoFinal\Release\ProyectoFinal.exe
